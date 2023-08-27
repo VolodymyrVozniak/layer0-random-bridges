@@ -5,6 +5,10 @@ from web3 import Web3
 from .settings import EXPLORERS
 
 
+def search_setting_data_by_element(element_search, value, list):
+    return [element for element in list if element[element_search] == value]
+
+
 def search_setting_data(chain, list):
     return [element for element in list if element['CHAIN'] == chain]
 

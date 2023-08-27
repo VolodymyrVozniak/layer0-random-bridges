@@ -1,7 +1,8 @@
+import os
 import json
 
 
-with open(f"abi/erc20.json", "r") as file:
+with open(os.path.join(os.path.dirname(__file__), "abi/erc20.json"), "r") as file:
     ERC20_ABI = json.load(file)
 
 MAX_TIME_CHECK_TX_STATUS = 100

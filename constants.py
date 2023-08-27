@@ -1,5 +1,5 @@
-# Possible choices: Aptos, Testnet, Harmony, Bitcoin, Merkly
-MODULES = ["Aptos", "Testnet", "Harmony", "Bitcoin", "Merkly"]
+# Possible choices: Aptos, Testnet, Harmony, Bitcoin, Stargate, Merkly
+MODULES = ["Aptos", "Testnet", "Harmony", "Bitcoin", "Stargate", "Merkly"]
 
 SLEEP_FROM = 400
 SLEEP_TO   = 600
@@ -12,16 +12,17 @@ APTOS_WALLETS_PATH = "data/aptos_wallets.txt"
 
 
 """TRADER JOE"""
-TRADER_JOE_AMOUNT_FROM = 0.01   # AVAX
-TRADER_JOE_AMOUNT_TO   = 0.02   # AVAX
+
+TRADER_JOE_AMOUNT_FROM = 0.02   # AVAX
+TRADER_JOE_AMOUNT_TO   = 0.05   # AVAX
 TRADER_JOE_MAX_GAS     = 0.017  # AVAX
 TRADER_JOE_MAX_BTC     = 0.1    # BTC
 
 
 """APTOS"""
 
-APTOS_AMOUNT_FROM = 0.08  # USDT
-APTOS_AMOUNT_TO   = 0.13  # USDT
+APTOS_AMOUNT_FROM = 0.11  # USDT
+APTOS_AMOUNT_TO   = 0.23  # USDT
 
 # Possible choices: Polygon, Arbitrum, BSC
 APTOS_SOURCE_CHAINS = ["BSC"]
@@ -48,20 +49,20 @@ TESTNET_AMOUNT_TO   = 0.00017  # ETH
 TESTNET_SOURCE_CHAINS = ["Arbitrum"]
 
 TESTNET_MAX_GAS = {
-    "Arbitrum": 0.00023,  # ETH
-    "Optimism": 0.00023   # ETH
+    "Arbitrum": 0.0002,  # ETH
+    "Optimism": 0.0002   # ETH
 }
 
 TESTNET_MAX_VALUE = {
-    "Arbitrum": 0.0007,   # ETH
-    "Optimism": 0.0007    # ETH
+    "Arbitrum": 0.0006,   # ETH
+    "Optimism": 0.0006    # ETH
 }
 
 
 """HARMONY"""
 
-HARMONY_AMOUNT_FROM = 0.08  # USDT
-HARMONY_AMOUNT_TO   = 0.13  # USDT
+HARMONY_AMOUNT_FROM = 0.11  # USDT
+HARMONY_AMOUNT_TO   = 0.23  # USDT
 
 # Possible choices: BSC
 HARMONY_SOURCE_CHAINS = ["BSC"]
@@ -95,6 +96,46 @@ BITCOIN_MAX_VALUE = {
     "Avalanche": 0.08,   # AVAX
     "Polygon": 1.5,      # MATIC
 }
+
+
+"""STARGATE"""
+
+STARGATE_AMOUNT_FROM = 0.13  # USDT or USDC
+STARGATE_AMOUNT_TO   = 0.21  # USDT or USDC
+
+# Possible choices: BSC, Arbitrum, Optimism, Polygon, Avalanche, Fantom
+STARGATE_FROM_CHAINS = ["Polygon"]
+STARGATE_TO_CHAINS   = ["BSC"]
+
+# Possible choices:
+# BSC:       USDT
+# Arbitrum:  USDT
+# Optimism:  USDC
+# Polygon:   USDT; USDC
+# Avalanche: USDT; USDC
+# Fantom:    USDC
+STARGATE_FROM_TOKENS = ["USDT"]
+STARGATE_TO_TOKENS   = ["USDT"]
+
+STARGATE_MAX_GAS = {
+    "BSC": 0.0014,       # BNB
+    "Arbitrum": 0.0002,  # ETH
+    "Optimism": 0.0002,  # ETH
+    "Polygon": 0.1,      # MATIC
+    "Avalanche": 0.017,  # AVAX
+    "Fantom": 0.25       # FTM
+}
+
+STARGATE_MAX_VALUE = {
+    "BSC": 0.0046,       # BNB
+    "Arbitrum": 0.0006,  # ETH
+    "Optimism": 0.0006,  # ETH
+    "Polygon": 1.5,      # MATIC
+    "Avalanche": 0.08,   # AVAX
+    "Fantom": 4          # FTM
+}
+
+STARGATE_SLIPPAGE = 0.5  # %
 
 
 """MERKLY"""

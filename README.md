@@ -5,6 +5,7 @@ This repo allows you to use one of the following options at random for multiple 
 * **Testnet Bridge** (`ETH Arbitrum | Optimism -> GoerliETH Goerli`);
 * **Harmony Bridge** (`USDT BSC -> USDT Harmony`);
 * **Bitcoin Bridge** (`BTC.b Avalanche <-> BTC.b Polygon`);
+* **Stargate Bridge**;
 * **Merkly Refuel**.
 
 # Instructions
@@ -102,10 +103,21 @@ python main.py
     * `BITCOIN_MAX_GAS`: If price for chain gas is higher than this value, the script will sleep 30 seconds and try again;
     * `BITCOIN_MAX_VALUE`: If price for LayerZero gas is higher than this value, the script will sleep 30 seconds and try again.
 
+* **Stargate Bridge**
+    * `STARGATE_AMOUNT_FROM`: The lowest value to bridge in `USDT`;
+    * `STARGATE_AMOUNT_TO`: The highest value to bridge in `USDT`;
+    * `STARGATE_FROM_CHAINS`: The script will choose source chain at random from this list. Possible choices: `BSC`, `Arbitrum`, `Optimism`, `Polygon`, `Avalanche`, `Fantom`;
+    * `STARGATE_TO_CHAINS`: The script will choose destination chain at random from this list. Possible choices: `BSC`, `Arbitrum`, `Optimism`, `Polygon`, `Avalanche`, `Fantom`;
+    * `STARGATE_FROM_TOKENS`: The script will choose source token at random from this list. Possible choices: `BSC` (`USDT`), `Arbitrum` (`USDT`), `Optimism` (`USDC`), `Polygon` (`USDT` and `USDC`), `Avalanche` (`USDT` and `USDC`), `Fantom` (`USDC`);
+    * `STARGATE_FROM_TOKENS`: The script will choose destination token at random from this list. Possible choices: `BSC` (`USDT`), `Arbitrum` (`USDT`), `Optimism` (`USDC`), `Polygon` (`USDT` and `USDC`), `Avalanche` (`USDT` and `USDC`), `Fantom` (`USDC`);
+    * `STARGATE_MAX_GAS`: If price for chain gas is higher than this value, the script will sleep 30 seconds and try again;
+    * `STARGATE_MAX_VALUE`: If price for LayerZero gas is higher than this value, the script will sleep 30 seconds and try again.
+    * `STARGATE_SLIPPAGE`: Slippage for Stargate in %.
+
 * **Merkly Refuel**
     * `MERKLY_FROM_CHAINS`: The script will choose source chain at random from this list. Possible choices: `optimism`, `bsc`, `arbitrum`, `polygon`, `zksync`, `avalanche`, `gnosis`, `fantom`, `nova`, `core`, `celo`, `moonbeam`, `moonriver`;
     * `MERKLY_TO_CHAINS`: The script will choose destination chain at random from certain list. Check manually which destination chains are possible for certain source chain at [Merkly](https://minter.merkly.com/gas);
-    * `MERKLY_AMOUNTS`: The lowest and highest values to bridge in native token for each destination chain. Chack manually at [Merkly](https://minter.merkly.com/gas);
+    * `MERKLY_AMOUNTS`: The lowest and highest values to bridge in native token for each destination chain. Chack manually at [Merkly](https://minter.merkly.com/gas).
 
 -----
 

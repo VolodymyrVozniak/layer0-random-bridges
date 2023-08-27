@@ -4,6 +4,7 @@ Use one of the following options at random for multiple wallets:
     * Testnet Bridge (ETH Arbitrum | Optimism -> GoerliETH Goerli);
     * Harmony Bridge (USDT BSC -> USDT Harmony);
     * Bitcoin Bridge (BTC.b Avalanche <-> BTC.b Polygon);
+    * Stargate Bridge;
     * Merkly Refuel.
 
 All settings can be found in constants.py
@@ -13,10 +14,10 @@ import random
 
 from loguru import logger
 
-from src.bridges import aptos_bridge, harmony_bridge, testnet_bridge, bitcoin_bridge
+from src.bridges import aptos_bridge, harmony_bridge, testnet_bridge, bitcoin_bridge, stargate_bridge
 from src.merkly import merkly_refuel
 from src.utils import sleeping
-from .constants import *
+from constants import *
 
 
 with open(WALLETS_PATH, "r") as f:
@@ -28,7 +29,7 @@ if "Aptos" in MODULES:
     APTOS_WALLETS_DICT  = dict(zip(WALLETS, APTOS_WALLETS))
 
 if RANDOM_WALLETS:
-    WALLETS = random.shuffle(WALLETS)
+    random.shuffle(WALLETS)
 
 
 def run(choice, **kwargs):
@@ -82,6 +83,21 @@ def run(choice, **kwargs):
             max_bridge=max_bridge,
             max_gas=BITCOIN_MAX_GAS[from_chain],
             max_value=BITCOIN_MAX_VALUE[from_chain]
+        )
+
+    elif choice == "Stargate":
+        from_chain = random.choice(STARGATE_FROM_CHAINS)
+        return stargate_bridge(
+            name=kwargs["name"],
+            private_key=kwargs["wallet"],
+            amount=random.uniform(STARGATE_AMOUNT_FROM, STARGATE_AMOUNT_TO),
+            from_chain=from_chain,
+            to_chain=random.choice(STARGATE_TO_CHAINS),
+            from_token=random.choice(STARGATE_FROM_TOKENS),
+            to_token=random.choice(STARGATE_TO_TOKENS),
+            max_gas=STARGATE_MAX_GAS[from_chain],
+            max_value=STARGATE_MAX_VALUE[from_chain],
+            slippage=STARGATE_SLIPPAGE
         )
 
     elif choice == "Merkly":
