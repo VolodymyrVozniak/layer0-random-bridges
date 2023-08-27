@@ -4,7 +4,7 @@ import random
 
 from src.swap import trade_avax_to_btc, trade_btc_to_avax
 from src.utils import sleeping
-from .constants import SLEEP_FROM, SLEEP_TO, RANDOM_WALLETS, WALLETS_PATH, \
+from constants import SLEEP_FROM, SLEEP_TO, RANDOM_WALLETS, WALLETS_PATH, \
     TRADER_JOE_AMOUNT_FROM, TRADER_JOE_AMOUNT_TO, TRADER_JOE_MAX_GAS, TRADER_JOE_MAX_BTC
 
 

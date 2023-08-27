@@ -7,7 +7,13 @@ SLEEP_TO   = 600
 RETRY = 10
 
 RANDOM_WALLETS = True
+KEEP_DONE_WALLETS = True
+
+PROCESS_ALL = True
+N_WALLETS = 5  # Ignore if PROCESS_ALL is True
+
 WALLETS_PATH = "data/wallets.txt"
+DONE_WALLETS_PATH = "data/done_wallets.txt"
 APTOS_WALLETS_PATH = "data/aptos_wallets.txt"
 
 

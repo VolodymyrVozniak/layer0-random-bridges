@@ -65,7 +65,11 @@ python main.py
     * `SLEEP_TO`: The highest value to sleep between wallets in seconds;
     * `RETRY`: Number of retries for one wallet;
     * `RANDOM_WALLETS`: Rather to shuffle wallets;
+    * `KEEP_DONE_WALLETS`: Write done private keys to separate file;
+    * `PROCESS_ALL`: Rather to process all wallets;
+    * `N_WALLETS`: Number of wallets to process if `PROCESS_ALL` is False;
     * `WALLETS_PATH`: Path for file with private keys (each private key from new line);
+    * `DONE_WALLETS_PATH`: Path for file with done private keys (must be empty and will be overwritten each time the script is running);
     * `APTOS_WALLETS_PATH`: Path for file with Aptos public addresses (each address from new line).
 
 * **Trader Joe**

@@ -23,6 +23,18 @@ from constants import *
 with open(WALLETS_PATH, "r") as f:
     WALLETS = [row.strip() for row in f]
 
+if KEEP_DONE_WALLETS:
+    with open(DONE_WALLETS_PATH, "r") as f:
+        DONE_WALLETS = [row.strip() for row in f]
+    WALLETS = [wallet for wallet in WALLETS if wallet not in DONE_WALLETS]
+
+N_WALLETS = len(WALLETS) if PROCESS_ALL else min(N_WALLETS, len(WALLETS))
+
+if not WALLETS:
+    logger.warning(
+        f"Manually delete keys from {DONE_WALLETS_PATH} or add private keys to {WALLETS_PATH}!"
+    )
+
 if "Aptos" in MODULES:
     with open(APTOS_WALLETS_PATH, "r") as f:
         APTOS_WALLETS = [row.strip() for row in f]
@@ -116,8 +128,9 @@ def run(choice, **kwargs):
 
 
 if __name__ == "__main__":
-    for i, wallet in enumerate(WALLETS):
+    for i in range(N_WALLETS):
         retry = 0
+        wallet = random.choice(WALLETS) if RANDOM_WALLETS else WALLETS[i]
 
         while retry < RETRY:
             logger.info(f"Running {retry + 1} attempt...")
@@ -129,6 +142,8 @@ if __name__ == "__main__":
             )
 
             if status:
+                if KEEP_DONE_WALLETS:
+                    DONE_WALLETS.append(wallet)
                 logger.success("Find successful transaction!")
                 break
             else:
@@ -139,3 +154,8 @@ if __name__ == "__main__":
             logger.error("CANNOT find successful transaction!")
 
         sleeping(SLEEP_FROM, SLEEP_TO)
+
+    if KEEP_DONE_WALLETS:
+        with open(DONE_WALLETS_PATH, "r") as file:
+            for wallet in DONE_WALLETS:
+                file.write(wallet + "\n")
