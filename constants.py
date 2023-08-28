@@ -1,8 +1,8 @@
 # Possible choices: Aptos, Testnet, Harmony, Bitcoin, Stargate, Merkly
-MODULES = ["Aptos", "Testnet", "Harmony", "Bitcoin", "Stargate", "Merkly"]
+MODULES = ["Aptos", "Testnet", "Bitcoin", "Merkly"]
 
-SLEEP_FROM = 600
-SLEEP_TO   = 1000
+SLEEP_FROM = 1000
+SLEEP_TO   = 2000
 
 RETRY = 10
 
@@ -31,7 +31,7 @@ APTOS_AMOUNT_FROM = 0.11  # USDT
 APTOS_AMOUNT_TO   = 0.23  # USDT
 
 # Possible choices: Polygon, Arbitrum, BSC
-APTOS_SOURCE_CHAINS = ["Polygon", "BSC"]
+APTOS_SOURCE_CHAINS = ["Polygon"]
 
 APTOS_MAX_GAS = {
     "Polygon": 0.1,       # MATIC
@@ -55,13 +55,13 @@ TESTNET_AMOUNT_TO   = 0.00017  # ETH
 TESTNET_SOURCE_CHAINS = ["Arbitrum"]
 
 TESTNET_MAX_GAS = {
-    "Arbitrum": 0.0002,  # ETH
-    "Optimism": 0.0002   # ETH
+    "Arbitrum": 0.0006,  # ETH
+    "Optimism": 0.0006   # ETH
 }
 
 TESTNET_MAX_VALUE = {
-    "Arbitrum": 0.0006,   # ETH
-    "Optimism": 0.0006    # ETH
+    "Arbitrum": 0.0002,   # ETH
+    "Optimism": 0.0002    # ETH
 }
 
 
@@ -91,7 +91,7 @@ BITCOIN_AMOUNT_FROM = 0.00001
 BITCOIN_AMOUNT_TO   = 0.00002
 
 # Possible choices: Avalanche, Polygon
-BITCOIN_SOURCE_CHAINS = ["Avalanche", "Polygon"]
+BITCOIN_SOURCE_CHAINS = ["Avalanche"]
 
 BITCOIN_MAX_GAS = {
     "Avalanche": 0.017,  # AVAX

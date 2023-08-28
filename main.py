@@ -117,12 +117,13 @@ def run(choice, **kwargs):
         to_chain = random.choice(MERKLY_TO_CHAINS[from_chain])
         amounts = MERKLY_AMOUNTS[to_chain]
         return merkly_refuel(
+            name=kwargs["name"],
             privatekey=kwargs["wallet"],
             from_chain=from_chain,
             to_chain=to_chain,
             amount=random.uniform(amounts[0], amounts[1])
         )
-    
+
     else:
         raise NotImplementedError
 
