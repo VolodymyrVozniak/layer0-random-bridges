@@ -10,14 +10,14 @@ def get_adapterParams(gaslimit: int, amount: int):
     return Web3.to_hex(encode(["uint16", "uint64", "uint256"], [2, gaslimit, amount])[30:])
 
 
-def merkly_refuel(privatekey, from_chain, to_chain, amount):
+def merkly_refuel(name, privatekey, from_chain, to_chain, amount):
     try:
-        module_str = f'merkly_refuel : {from_chain} => {to_chain}'
-        logger.info(module_str)
-
-        web3        = get_web3(from_chain, privatekey)
+        web3        = get_web3(from_chain)
         account     = web3.eth.account.from_key(privatekey)
         wallet      = account.address
+
+        log_name = f'MERKLY REFUEL {from_chain} to {to_chain}'
+        logger.info(f'{name} | {wallet} | {log_name}')
 
         contract = web3.eth.contract(address=Web3.to_checksum_address(MERKLY_CONTRACTS[from_chain]), abi=ABI_MERKLY_REFUEL)
 
@@ -53,17 +53,17 @@ def merkly_refuel(privatekey, from_chain, to_chain, amount):
 
             status = check_status_tx(from_chain, tx_hash)
             if status == 1:
-                logger.success(f'{module_str} | {tx_link}')
+                logger.success(f'{log_name} | {tx_link}')
                 return True
 
             else:
-                logger.error(f'{module_str} | tx is failed | {tx_link}')
+                logger.error(f'{log_name} | tx is failed | {tx_link}')
                 return
 
         else:
-            logger.error(f"{module_str} : can't refuel : balance = {amount}")
+            logger.error(f"{log_name} : can't refuel : balance = {amount}")
             return
 
     except Exception as error:
-        logger.error(f'{module_str} | {error}')
+        logger.error(f'{log_name} | {error}')
         return

@@ -1,15 +1,15 @@
 # Possible choices: Aptos, Testnet, Harmony, Bitcoin, Stargate, Merkly
 MODULES = ["Aptos", "Testnet", "Harmony", "Bitcoin", "Stargate", "Merkly"]
 
-SLEEP_FROM = 400
-SLEEP_TO   = 600
+SLEEP_FROM = 600
+SLEEP_TO   = 1000
 
 RETRY = 10
 
 RANDOM_WALLETS = True
 KEEP_DONE_WALLETS = True
 
-PROCESS_ALL = True
+PROCESS_ALL = False
 N_WALLETS = 5  # Ignore if PROCESS_ALL is True
 
 WALLETS_PATH = "data/wallets.txt"
@@ -31,7 +31,7 @@ APTOS_AMOUNT_FROM = 0.11  # USDT
 APTOS_AMOUNT_TO   = 0.23  # USDT
 
 # Possible choices: Polygon, Arbitrum, BSC
-APTOS_SOURCE_CHAINS = ["BSC"]
+APTOS_SOURCE_CHAINS = ["Polygon", "BSC"]
 
 APTOS_MAX_GAS = {
     "Polygon": 0.1,       # MATIC
@@ -106,8 +106,8 @@ BITCOIN_MAX_VALUE = {
 
 """STARGATE"""
 
-STARGATE_AMOUNT_FROM = 0.13  # USDT or USDC
-STARGATE_AMOUNT_TO   = 0.21  # USDT or USDC
+STARGATE_AMOUNT_FROM = 1.3  # USDT or USDC
+STARGATE_AMOUNT_TO   = 1.7  # USDT or USDC
 
 # Possible choices: BSC, Arbitrum, Optimism, Polygon, Avalanche, Fantom
 STARGATE_FROM_CHAINS = ["Polygon"]

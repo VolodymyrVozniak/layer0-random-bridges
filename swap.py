@@ -26,14 +26,14 @@ Choose module: '''))
     for i, wallet in enumerate(WALLETS):
         if response == 1:
             trade_avax_to_btc(
-                name=str(i),
+                name=str(i+1),
                 private_key=wallet,
                 value=random.uniform(TRADER_JOE_AMOUNT_FROM, TRADER_JOE_AMOUNT_TO),
                 max_gas=TRADER_JOE_MAX_GAS
             )
         elif response == 2:
             trade_btc_to_avax(
-                name=str(i),
+                name=str(i+1),
                 private_key=wallet,
                 max_btc=TRADER_JOE_MAX_BTC,
                 max_gas=TRADER_JOE_MAX_GAS

@@ -137,13 +137,14 @@ if __name__ == "__main__":
 
             status = run(
                 choice=random.choice(MODULES),
-                name=str(i),
+                name=str(i+1),
                 wallet=wallet
             )
 
             if status:
                 if KEEP_DONE_WALLETS:
-                    DONE_WALLETS.append(wallet)
+                    with open(DONE_WALLETS_PATH, "a") as file:
+                        file.write(wallet + "\n")
                 logger.success("Find successful transaction!")
                 break
             else:
@@ -154,8 +155,3 @@ if __name__ == "__main__":
             logger.error("CANNOT find successful transaction!")
 
         sleeping(SLEEP_FROM, SLEEP_TO)
-
-    if KEEP_DONE_WALLETS:
-        with open(DONE_WALLETS_PATH, "r") as file:
-            for wallet in DONE_WALLETS:
-                file.write(wallet + "\n")
