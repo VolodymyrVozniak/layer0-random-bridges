@@ -80,22 +80,22 @@ def run(choice, **kwargs):
         )
     
     elif choice == "Bitcoin":
-        from_chain = random.choice(BITCOIN_SOURCE_CHAINS)
-
         if BITCOIN_BRIDGE_ALL:
             max_bridge = "ALL"
         else:
             max_bridge = random.uniform(BITCOIN_AMOUNT_FROM, BITCOIN_AMOUNT_TO)
 
-        return bitcoin_bridge(
-            name=kwargs["name"],
-            private_key=kwargs["wallet"],
-            from_chain=from_chain,
-            to_chain=random.choice(list(set(BITCOIN_SOURCE_CHAINS) - set(from_chain))),
-            max_bridge=max_bridge,
-            max_gas=BITCOIN_MAX_GAS[from_chain],
-            max_value=BITCOIN_MAX_VALUE[from_chain]
-        )
+        for from_chain in BITCOIN_SOURCE_CHAINS:
+            if bitcoin_bridge(
+                name=kwargs["name"],
+                private_key=kwargs["wallet"],
+                from_chain=from_chain,
+                to_chain=random.choice(list(set(BITCOIN_SOURCE_CHAINS) - set(from_chain))),
+                max_bridge=max_bridge,
+                max_gas=BITCOIN_MAX_GAS[from_chain],
+                max_value=BITCOIN_MAX_VALUE[from_chain]
+            ):
+                return True
 
     elif choice == "Stargate":
         from_chain = random.choice(STARGATE_FROM_CHAINS)

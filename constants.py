@@ -7,7 +7,7 @@ SLEEP_TO   = 2000
 RETRY = 10
 
 RANDOM_WALLETS = True
-CHOOSE_RANDOM = False
+CHOOSE_RANDOM = True
 KEEP_DONE_WALLETS = True
 
 PROCESS_ALL = False
@@ -92,7 +92,7 @@ BITCOIN_AMOUNT_FROM = 0.00001
 BITCOIN_AMOUNT_TO   = 0.00002
 
 # Possible choices: Avalanche, Polygon
-BITCOIN_SOURCE_CHAINS = ["Avalanche"]
+BITCOIN_SOURCE_CHAINS = ["Avalanche", "Polygon"]
 
 BITCOIN_MAX_GAS = {
     "Avalanche": 0.017,  # AVAX
