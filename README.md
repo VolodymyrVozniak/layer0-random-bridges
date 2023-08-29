@@ -65,6 +65,7 @@ python main.py
     * `SLEEP_TO`: The highest value to sleep between wallets in seconds;
     * `RETRY`: Number of retries for one wallet;
     * `RANDOM_WALLETS`: Rather to shuffle wallets;
+    * `CHOOSE_RANDOM`: Choose random wallet from wallets on each step (meaning 1 wallet can be chosen more than once);
     * `KEEP_DONE_WALLETS`: Write done private keys to separate file;
     * `PROCESS_ALL`: Rather to process all wallets;
     * `N_WALLETS`: Number of wallets to process if `PROCESS_ALL` is False;

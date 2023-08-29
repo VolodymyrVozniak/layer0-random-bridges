@@ -23,6 +23,11 @@ from constants import *
 with open(WALLETS_PATH, "r") as f:
     WALLETS = [row.strip() for row in f]
 
+if "Aptos" in MODULES:
+    with open(APTOS_WALLETS_PATH, "r") as f:
+        APTOS_WALLETS = [row.strip() for row in f]
+    APTOS_WALLETS_DICT  = dict(zip(WALLETS, APTOS_WALLETS))
+
 if KEEP_DONE_WALLETS:
     with open(DONE_WALLETS_PATH, "r") as f:
         DONE_WALLETS = [row.strip() for row in f]
@@ -34,11 +39,6 @@ if not WALLETS:
     logger.warning(
         f"Manually delete keys from {DONE_WALLETS_PATH} or add private keys to {WALLETS_PATH}!"
     )
-
-if "Aptos" in MODULES:
-    with open(APTOS_WALLETS_PATH, "r") as f:
-        APTOS_WALLETS = [row.strip() for row in f]
-    APTOS_WALLETS_DICT  = dict(zip(WALLETS, APTOS_WALLETS))
 
 if RANDOM_WALLETS:
     random.shuffle(WALLETS)
@@ -131,7 +131,7 @@ def run(choice, **kwargs):
 if __name__ == "__main__":
     for i in range(N_WALLETS):
         retry = 0
-        wallet = random.choice(WALLETS) if RANDOM_WALLETS else WALLETS[i]
+        wallet = random.choice(WALLETS) if CHOOSE_RANDOM else WALLETS[i]
 
         while retry < RETRY:
             logger.info(f"Running {retry + 1} attempt...")
