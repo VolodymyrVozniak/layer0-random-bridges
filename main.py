@@ -90,7 +90,7 @@ def run(choice, **kwargs):
                 name=kwargs["name"],
                 private_key=kwargs["wallet"],
                 from_chain=from_chain,
-                to_chain=random.choice(list(set(BITCOIN_SOURCE_CHAINS) - set(from_chain))),
+                to_chain=random.choice(list(set(BITCOIN_SOURCE_CHAINS) - {from_chain})),
                 max_bridge=max_bridge,
                 max_gas=BITCOIN_MAX_GAS[from_chain],
                 max_value=BITCOIN_MAX_VALUE[from_chain]
@@ -131,6 +131,8 @@ def run(choice, **kwargs):
 if __name__ == "__main__":
     for i in range(N_WALLETS):
         retry = 0
+
+        logger.info(f"Choosing from {len(WALLETS)} wallets...")
         wallet = random.choice(WALLETS) if CHOOSE_RANDOM else WALLETS[i]
 
         while retry < RETRY:
