@@ -1,5 +1,5 @@
 # Possible choices: Aptos, Testnet, Harmony, Bitcoin, Stargate, Merkly
-MODULES = ["Aptos", "Testnet", "Bitcoin", "Merkly"]
+MODULES = ["Aptos", "Testnet", "Harmony", "Bitcoin", "Merkly"]
 
 SLEEP_FROM = 1000
 SLEEP_TO   = 2000
@@ -32,7 +32,7 @@ APTOS_AMOUNT_FROM = 0.11  # USDT
 APTOS_AMOUNT_TO   = 0.23  # USDT
 
 # Possible choices: Polygon, Arbitrum, BSC
-APTOS_SOURCE_CHAINS = ["Polygon"]
+APTOS_SOURCE_CHAINS = ["Polygon", "BSC"]
 
 APTOS_MAX_GAS = {
     "Polygon": 0.1,       # MATIC
@@ -154,26 +154,31 @@ MERKLY_FROM_CHAINS = ["polygon", "avalanche", "bsc", "fantom", "gnosis", "zksync
 # Possible choices: avalanche, polygon, ethereum, bsc, arbitrum, optimism,
 #                   fantom, aptos, harmony, celo, moonbeam, fuse, gnosis,
 #                   klaytn, metis, core, polygon_zkevm, canto, zksync,
-#                   moonriver, tenet, nova, kava, meter
+#                   moonriver, tenet, nova, kava, meter, base, linea, zora,
+#                   mantle, dfk, okx, loot, opBNB, tomo, astar, aurora
 MERKLY_TO_CHAINS = {
-    "polygon": ["celo", "gnosis", "harmony", "kava", "core", "moonbeam", "moonriver", "nova", "fuse"],
-    "avalanche": ["celo", "gnosis", "harmony", "kava", "core", "moonbeam", "moonriver", "nova", "fuse", "klaytn"],
-    "bsc": ["celo", "gnosis", "harmony", "kava", "core", "moonbeam", "moonriver", "nova", "fuse", "klaytn"],
-    "fantom": ["celo", "gnosis", "harmony", "kava", "moonbeam", "moonriver", "nova"],
+    "bsc": ["harmony", "celo", "gnosis", "klaytn", "core", "kava", "dfk", "okx", "loot", "tomo"],
+    "polygon": ["harmony", "celo", "fuse", "gnosis", "core", "kava", "dfk", "okx", "loot", "tomo"],
+    "avalanche": ["harmony", "celo", "gnosis", "klaytn", "core", "kava", "dfk", "okx", "loot", "tomo"],
+    "fantom": ["harmony", "celo", "moonbeam", "gnosis", "moonriver", "kava", "dfk"],
     "gnosis": ["celo", "fuse", "klaytn"],
     "zksync": ["nova"]
 }
 
 # Amount of native token for each chain [from, to]
 MERKLY_AMOUNTS = {
-    "celo": [0.04, 0.05],
-    "gnosis": [0.01, 0.02],
-    "harmony": [1, 2],
-    "kava": [0.015, 0.03],
-    "core": [0.015, 0.03],
-    "moonbeam": [0.5, 1],
-    "moonriver": [0.0023, 0.0046],
-    "nova": [0.000006, 0.000012],
-    "fuse": [0.04, 0.05],
-    "klaytn": [0.04, 0.05]
+    "harmony": [1, 2],             # 0.01 to 0.02 in $
+    "celo": [0.025, 0.05],         # 0.01 to 0.02 in $
+    "fuse": [0.04, 0.05],          # 0.0015 to 0.002 in $
+    "gnosis": [0.01, 0.02],        # 0.01 to 0.02 in $
+    "klaytn": [0.04, 0.05],        # 0.005 to 0.006 in $
+    "core": [0.025, 0.05],         # 0.01 to 0.02 in $
+    "kava": [0.015, 0.03],         # 0.01 to 0.02 in $
+    "dfk": [0.04, 0.05],           # 0.005 to 0.006 in $
+    "okx": [0.00075, 0.0015],      # 0.01 to 0.02 in $
+    "loot": [0.015, 0.03],         # 0.01 to 0.02 in $
+    "tomo": [0.0065, 0.013],       # 0.01 to 0.02 in $
+    "moonbeam": [0.5, 1],          # 0.01 to 0.02 in $
+    "moonriver": [0.0025, 0.005],  # 0.01 to 0.02 in $
+    "nova": [0.000006, 0.000012],  # 0.01 to 0.02 in $
 }
